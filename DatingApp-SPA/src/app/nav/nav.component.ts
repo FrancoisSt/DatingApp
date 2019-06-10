@@ -11,30 +11,25 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(
-    public authService: AuthService,
-    private alertify: AlertifyService,
-    private router: Router
-  ) {}
+  constructor(public authService: AuthService, private alertify: AlertifyService,
+      private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   login() {
-    this.authService.login(this.model).subscribe(
-      next => {
-        this.alertify.success('Logged in successfully');
-      },
-      error => {
-        this.alertify.error(error);
-      },
-      () => {
-        this.router.navigate(['/members']);
-      }
-    );
+    this.authService.login(this.model).subscribe(next => {
+      this.alertify.success('Logged in successfully');
+    }, error => {
+      this.alertify.error(error);
+    }, () => {
+      this.router.navigate(['/members']);
+    });
   }
 
   loggedIn() {
-    return this.authService.loggedIn();
+    const token = localStorage.getItem('token');
+    return !!token;
   }
 
   logout() {
@@ -42,4 +37,5 @@ export class NavComponent implements OnInit {
     this.alertify.message('logged out');
     this.router.navigate(['/home']);
   }
+
 }

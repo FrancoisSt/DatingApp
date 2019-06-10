@@ -10,10 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import {
-  ErrorInterceptor,
-  ErrorInterceptorProvider
-} from './_services/error.interceptor';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { MemberListComponent } from './member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
@@ -39,11 +36,11 @@ import { AuthGuard } from './_guards/auth.guard';
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    AuthService,
-    ErrorInterceptorProvider,
-    AlertifyService,
-    AuthGuard
-  ],
+      AuthService,
+      ErrorInterceptorProvider,
+      AlertifyService,
+      AuthGuard
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
